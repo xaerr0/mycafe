@@ -555,6 +555,7 @@ section {
 
 .accordion {
   border-top: 2px solid var(--coffee);
+  padding-top: 12px;
 }
 
 .accordion details {
