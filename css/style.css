@@ -115,7 +115,7 @@ p { margin: 0 0 1em; max-width: 62ch; }
    reachable (ordering), instead of pinning the whole header. ---------- */
 
 .site-header {
-  padding: 28px 0 20px;
+  padding: 16px 0 12px;
   text-align: center;
 }
 
@@ -123,20 +123,20 @@ p { margin: 0 0 1em; max-width: 62ch; }
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   text-decoration: none;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .site-header .brand img {
-  height: 56px;
-  width: 56px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
 }
 
 .brand-text {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
