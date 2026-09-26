@@ -547,11 +547,10 @@ section {
 }
 
 .menu-course h2 {
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
+  font-size: 1.9rem;
   color: var(--turquoise-dark);
   border-bottom: 1px solid var(--line);
-  padding-bottom: 0.4em;
+  padding-bottom: 0.3em;
 }
 
 .accordion {
@@ -565,7 +564,7 @@ section {
 .accordion summary {
   list-style: none;
   cursor: pointer;
-  padding: 22px 4px;
+  padding: 22px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -574,7 +573,7 @@ section {
 .accordion summary h3 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: inherit;
 }
@@ -595,12 +594,16 @@ section {
 }
 
 .accordion details > *:not(summary) {
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.accordion details > *:first-of-type {
+  padding-top: 4px;
 }
 
 .accordion details > *:last-child {
-  padding-bottom: 20px;
+  padding-bottom: 22px;
 }
 
 .accordion .note {
@@ -624,10 +627,10 @@ section {
 }
 
 .menu-item .item-body h4 {
-  margin: 0 0 0.2em;
-  font-family: var(--font-body);
+  margin: 0 0 0.25em;
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: var(--coffee);
 }
 
@@ -640,6 +643,7 @@ section {
 .menu-item .price {
   font-family: var(--font-display);
   font-weight: 700;
+  font-size: 1.15rem;
   color: var(--turquoise-dark);
   white-space: nowrap;
 }
