@@ -1,24 +1,27 @@
-/* My Cafe — diner & delivery, Newark CA. Design tokens grounded in the actual brand:
-   the current logo already leans on a brass/gold script mark and a forest-green
-   "ESTD 2010" badge, so the palette below extends that rather than inventing one. */
+/* My Cafe — diner & delivery, Newark CA.
+   Structural direction deliberately breaks from a photo-hero-with-overlay
+   template: a solid-panel split hero, a receipt-styled stat strip, color-block
+   sections instead of alternating image/text bands, an accordion menu, and a
+   single-row footer with a closing CTA band ahead of it. Palette leans into
+   the diner's morning trade — coffee, egg yolk, formica turquoise — rather
+   than the forest green used on the previous pass at this site. */
 
 :root {
-  --paper: #f2ead6;
-  --paper-dark: #e6dabd;
-  --ink: #241a12;
-  --forest: #2b4436;
-  --forest-dark: #1c2f25;
-  --gold: #c0922f;
-  --gold-light: #e3c073;
-  --brick: #a03323;
-  --brick-dark: #7c2519;
-  --cream-line: rgba(36, 26, 18, 0.12);
+  --cream: #f6ead0;
+  --cream-dark: #ecdcb4;
+  --paper: #fffbf2;
+  --coffee: #2e2018;
+  --coffee-soft: #5b4636;
+  --turquoise: #2f8f86;
+  --turquoise-dark: #1f655e;
+  --mustard: #d98f1b;
+  --mustard-dark: #b4740f;
+  --line: rgba(46, 32, 24, 0.14);
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Libre Franklin", -apple-system, sans-serif;
+  --font-display: "Bitter", Georgia, serif;
+  --font-body: "Karla", -apple-system, sans-serif;
 
   --max-width: 1180px;
-  --radius: 4px;
 }
 
 * {
@@ -31,8 +34,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--cream);
+  color: var(--coffee);
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
@@ -56,15 +59,15 @@ a {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.15;
   margin: 0 0 0.5em;
-  color: var(--forest-dark);
+  color: var(--coffee);
 }
 
-h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
-h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); }
-h3 { font-size: 1.3rem; }
+h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+h3 { font-size: 1.2rem; }
 
 p { margin: 0 0 1em; max-width: 62ch; }
 
@@ -72,8 +75,8 @@ p { margin: 0 0 1em; max-width: 62ch; }
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  padding: 0.85em 1.6em;
-  border-radius: var(--radius);
+  padding: 0.85em 1.7em;
+  border-radius: 2px;
   font-family: var(--font-body);
   font-weight: 700;
   text-decoration: none;
@@ -82,105 +85,80 @@ p { margin: 0 0 1em; max-width: 62ch; }
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--gold-light);
+  outline: 3px solid var(--turquoise);
   outline-offset: 2px;
 }
 
 .btn-primary {
-  background: var(--brick);
-  color: var(--paper);
+  background: var(--mustard);
+  color: var(--coffee);
 }
 
 .btn-primary:hover {
-  background: var(--brick-dark);
+  background: var(--coffee);
+  color: var(--cream);
 }
 
 .btn-outline {
-  border-color: var(--forest);
-  color: var(--forest-dark);
+  border-color: currentColor;
 }
 
 .btn-outline:hover {
-  background: var(--forest);
+  background: var(--coffee);
   color: var(--paper);
+  border-color: var(--coffee);
 }
 
-/* ---------- Header ---------- */
-
-.top-bar {
-  background: var(--forest-dark);
-  color: var(--paper);
-  font-size: 0.85rem;
-}
-
-.top-bar .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.top-bar a {
-  text-decoration: none;
-  color: var(--gold-light);
-}
-
-site-header, header.site-header {
-  display: block;
-}
+/* ---------- Header: no sticky bar, no logo-left pattern.
+   The mark sits centered above a plain text nav, and scrolls away with the
+   page; a fixed pill in the corner carries the one action worth keeping
+   reachable (ordering), instead of pinning the whole header. ---------- */
 
 .site-header {
-  background: var(--paper);
-  border-bottom: 3px solid var(--forest);
-  position: sticky;
-  top: 0;
-  z-index: 40;
+  padding: 28px 0 20px;
+  text-align: center;
 }
 
-.site-header .wrap {
-  display: flex;
+.site-header .brand {
+  display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 8px;
   text-decoration: none;
+  margin-bottom: 14px;
 }
 
-.brand img {
-  height: 52px;
-  width: auto;
+.site-header .brand img {
+  height: 56px;
+  width: 56px;
   border-radius: 50%;
 }
 
 .brand-text {
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--forest-dark);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .brand-text span {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
   font-weight: 700;
-  color: var(--brick);
+  color: var(--turquoise-dark);
+  margin-top: 2px;
+}
+
+nav.main-nav {
+  display: flex;
+  justify-content: center;
 }
 
 nav.main-nav ul {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
@@ -188,23 +166,29 @@ nav.main-nav ul {
 nav.main-nav a {
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--ink);
-  padding: 6px 2px;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  color: var(--coffee-soft);
+  padding: 4px 2px;
   border-bottom: 2px solid transparent;
 }
 
 nav.main-nav a[aria-current="page"],
 nav.main-nav a:hover {
-  border-bottom-color: var(--brick);
+  color: var(--coffee);
+  border-bottom-color: var(--mustard);
 }
 
 .nav-toggle {
   display: none;
-  background: none;
-  border: 2px solid var(--forest);
-  border-radius: var(--radius);
-  padding: 8px 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 60;
+  background: var(--paper);
+  border: 2px solid var(--coffee);
+  border-radius: 2px;
+  padding: 9px 11px;
   cursor: pointer;
 }
 
@@ -213,215 +197,344 @@ nav.main-nav a:hover {
 .nav-toggle::after {
   content: "";
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
-  background: var(--forest-dark);
+  background: var(--coffee);
   margin: 4px 0;
 }
 
-/* ---------- Hero ---------- */
+.order-fab {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 45;
+  background: var(--mustard);
+  color: var(--coffee);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(46, 32, 24, 0.25);
+}
+
+.order-fab:hover {
+  background: var(--coffee);
+  color: var(--cream);
+}
+
+/* ---------- Hero: solid coffee panel + real photo side by side.
+   No dark gradient laid over a background photo. ---------- */
 
 .hero {
-  position: relative;
-  color: var(--paper);
-  background: linear-gradient(180deg, rgba(28, 47, 37, 0.78), rgba(28, 47, 37, 0.88)),
-    url("../assets/images/interior-booth.jpg") center/cover no-repeat;
-  padding: 96px 0 84px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--coffee);
+  color: var(--cream);
+  min-height: 460px;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 48px;
 }
 
 .hero .eyebrow {
   font-weight: 700;
-  letter-spacing: 0.03em;
-  color: var(--gold-light);
-  margin-bottom: 0.6em;
+  letter-spacing: 0.04em;
+  color: var(--mustard);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.9em;
 }
 
 .hero h1 {
   color: var(--paper);
-  max-width: 14ch;
+  max-width: 12ch;
 }
 
 .hero p.lede {
-  color: var(--paper-dark);
-  font-size: 1.15rem;
-  max-width: 52ch;
+  color: var(--cream);
+  opacity: 0.85;
+  font-size: 1.08rem;
+  max-width: 40ch;
 }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-top: 1.6em;
+  margin-top: 1.4em;
 }
 
-.hero-actions .btn-outline {
-  border-color: var(--paper);
+.hero .btn-outline {
   color: var(--paper);
 }
 
-.hero-actions .btn-outline:hover {
+.hero .btn-outline:hover {
   background: var(--paper);
-  color: var(--forest-dark);
+  color: var(--coffee);
 }
 
-.hero-hours {
-  margin-top: 2.4em;
-  display: inline-flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  border-top: 1px solid rgba(242, 234, 214, 0.3);
-  padding-top: 1.2em;
-  font-size: 0.95rem;
+.hero-photo {
+  position: relative;
 }
 
-.hero-hours dt {
-  font-weight: 700;
-  color: var(--gold-light);
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.hero-hours dd {
-  margin: 0;
+/* ---------- Ticket strip: a receipt-styled stat row, not a plain 4-col grid ---------- */
+
+.ticket {
+  background: var(--paper);
+  border: 2px dashed var(--coffee-soft);
+  border-radius: 6px;
+  margin: -34px auto 0;
+  max-width: 880px;
+  position: relative;
+  z-index: 5;
+  padding: 22px 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-/* ---------- Sections ---------- */
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  width: 24px;
+  height: 24px;
+  background: var(--cream);
+  border-radius: 50%;
+}
+
+.ticket::before { left: -12px; }
+.ticket::after { right: -12px; }
+
+.ticket div {
+  text-align: center;
+  border-right: 1px dashed var(--line);
+  padding: 0 8px;
+}
+
+.ticket div:last-child {
+  border-right: none;
+}
+
+.ticket strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--turquoise-dark);
+}
+
+.ticket span {
+  font-size: 0.78rem;
+  color: var(--coffee-soft);
+}
+
+/* ---------- Color-block sections: content is separated by solid backgrounds,
+   not by alternating an image next to it every time. ---------- */
 
 section {
-  padding: 72px 0;
+  padding: 88px 0 72px;
 }
 
-section.alt {
-  background: var(--paper-dark);
+.block-turquoise {
+  background: var(--turquoise-dark);
+  color: var(--paper);
+}
+
+.block-turquoise h2 {
+  color: var(--paper);
+}
+
+.block-coffee {
+  background: var(--coffee);
+  color: var(--cream);
+}
+
+.block-coffee h2 {
+  color: var(--paper);
+}
+
+.block-paper {
+  background: var(--paper);
 }
 
 .section-head {
   max-width: 60ch;
-  margin-bottom: 2em;
+  margin-bottom: 1.6em;
 }
 
 .section-head .kicker {
   display: block;
   font-weight: 700;
-  color: var(--brick);
-  margin-bottom: 0.4em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.6em;
+  opacity: 0.85;
 }
 
-.grid-2 {
+.text-list {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 48px;
-  align-items: center;
+  gap: 22px;
+  margin-top: 1.6em;
 }
 
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+.text-list .item {
+  border-top: 1px solid rgba(255, 251, 242, 0.25);
+  padding-top: 18px;
 }
 
-.card {
-  background: var(--paper);
-  border: 1px solid var(--cream-line);
-  border-radius: var(--radius);
-  padding: 28px;
+.text-list h3 {
+  color: inherit;
+  margin-bottom: 0.2em;
 }
 
-.card h3 {
-  margin-bottom: 0.4em;
+.text-list p {
+  color: var(--cream);
 }
 
-/* Highlights strip */
+/* Quote block: stacked pull-quotes, not a grid next to a photo */
 
-.highlights {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  padding: 40px 0;
-  border-top: 1px solid var(--cream-line);
-  border-bottom: 1px solid var(--cream-line);
-}
-
-.highlights div {
+.quote-stack {
+  max-width: 760px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.highlights strong {
-  display: block;
+.quote-stack blockquote {
+  margin: 0 0 1.6em;
+}
+
+.quote-stack blockquote p {
   font-family: var(--font-display);
-  font-size: 1.8rem;
-  color: var(--forest-dark);
-}
-
-.highlights span {
-  font-size: 0.85rem;
-  color: var(--ink);
-  opacity: 0.75;
-}
-
-/* Reviews */
-
-.review {
-  border-left: 3px solid var(--gold);
-  padding-left: 20px;
-  margin-bottom: 1.6em;
-}
-
-.review p {
+  font-size: 1.5rem;
   font-style: italic;
-  margin-bottom: 0.3em;
+  max-width: none;
+  color: var(--coffee);
 }
 
-.review cite {
+.quote-stack cite {
   font-style: normal;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--brick);
+  color: var(--turquoise-dark);
 }
 
-/* ---------- Menu page ---------- */
+/* Split panel: used once, deliberately, for the visit/location moment */
 
-.menu-jump {
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.split-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.split-copy {
+  padding: 64px 48px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 1.6em 0 0;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.menu-jump a {
-  text-decoration: none;
-  font-size: 0.85rem;
+.hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted var(--line);
+  padding: 8px 0;
+  max-width: 320px;
+}
+
+/* Closing CTA band */
+
+.cta-band {
+  background: var(--mustard);
+  color: var(--coffee);
+  text-align: center;
+  padding: 64px 0;
+}
+
+.cta-band h2 {
+  color: var(--coffee);
+}
+
+/* ---------- Menu page: accordion categories, not pills or a sidebar ---------- */
+
+.menu-intro {
+  background: var(--coffee);
+  color: var(--cream);
+  padding: 56px 0 40px;
+  text-align: center;
+}
+
+.menu-intro .eyebrow {
+  color: var(--mustard);
+  text-transform: uppercase;
+  font-size: 0.8rem;
   font-weight: 700;
-  border: 1px solid var(--forest);
-  border-radius: 999px;
-  padding: 6px 14px;
-  color: var(--forest-dark);
+  letter-spacing: 0.04em;
 }
 
-.menu-jump a:hover {
-  background: var(--forest);
+.menu-intro h1 {
   color: var(--paper);
 }
 
-.hero .menu-jump a {
-  border-color: var(--paper);
-  color: var(--paper);
+.accordion {
+  border-top: 2px solid var(--coffee);
 }
 
-.hero .menu-jump a:hover {
-  background: var(--paper);
-  color: var(--forest-dark);
+.accordion details {
+  border-bottom: 2px solid var(--coffee);
 }
 
-.menu-group {
-  padding-top: 56px;
-  border-top: 1px solid var(--cream-line);
-  scroll-margin-top: 96px;
+.accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
-.menu-group:first-of-type {
-  border-top: none;
+.accordion summary::-webkit-details-marker {
+  display: none;
 }
 
-.menu-group > p.note {
+.accordion summary .plus {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--coffee-soft);
+}
+
+.accordion details[open] summary .plus {
+  transform: rotate(45deg);
+}
+
+.accordion .note {
   font-size: 0.9rem;
   opacity: 0.75;
   margin-top: -0.6em;
@@ -429,134 +542,140 @@ section.alt {
 
 .menu-items {
   display: grid;
-  gap: 20px;
-  margin-top: 1.4em;
+  gap: 18px;
+  margin: 1em 0 2em;
 }
 
 .menu-item {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  border-bottom: 1px dotted var(--cream-line);
-  padding-bottom: 14px;
+  border-bottom: 1px dotted var(--line);
+  padding-bottom: 12px;
 }
 
 .menu-item .item-body h4 {
   margin: 0 0 0.2em;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1.02rem;
-  color: var(--ink);
+  font-size: 1rem;
+  color: var(--coffee);
 }
 
 .menu-item .item-body p {
   margin: 0;
-  font-size: 0.92rem;
-  opacity: 0.85;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .menu-item .price {
   font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--brick);
+  font-weight: 700;
+  color: var(--turquoise-dark);
   white-space: nowrap;
 }
 
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
 .disclaimer {
-  margin-top: 3em;
+  margin-top: 2.4em;
   font-size: 0.8rem;
   opacity: 0.65;
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer: single row, no multi-column link grid ---------- */
 
 footer.site-footer {
-  background: var(--forest-dark);
-  color: var(--paper-dark);
-  padding: 56px 0 28px;
+  background: var(--coffee);
+  color: var(--cream);
+  padding: 28px 0;
+  font-size: 0.85rem;
+}
+
+footer.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 footer.site-footer a {
-  color: var(--gold-light);
+  color: var(--mustard);
   text-decoration: none;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(242, 234, 214, 0.15);
-}
-
-.footer-grid h4 {
-  color: var(--paper);
-  font-size: 1rem;
-  margin-bottom: 0.8em;
-}
-
-.footer-grid ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-grid li {
-  margin-bottom: 0.5em;
-}
-
-.footer-bottom {
-  padding-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-size: 0.82rem;
-  opacity: 0.75;
 }
 
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
-  .grid-2 {
+  .hero {
     grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    min-height: 280px;
+    order: -1;
+  }
+
+  .ticket {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 16px;
+  }
+
+  .ticket div:nth-child(2) {
+    border-right: none;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split-photo {
+    min-height: 260px;
   }
 
   .grid-3 {
     grid-template-columns: 1fr;
   }
-
-  .highlights {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 720px) {
+  .site-header .brand {
+    margin-bottom: 10px;
+  }
+
   nav.main-nav {
     position: fixed;
-    inset: 0 0 0 30%;
-    background: var(--forest-dark);
-    transform: translateX(100%);
-    transition: transform 0.25s ease;
-    padding: 96px 28px 28px;
+    inset: 0;
+    background: var(--coffee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 55;
   }
 
   nav.main-nav[data-open="true"] {
-    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
   }
 
   nav.main-nav ul {
     flex-direction: column;
-    gap: 20px;
+    gap: 26px;
+    text-align: center;
   }
 
-  nav.main-nav a {
+  nav.main-nav a,
+  nav.main-nav a[aria-current="page"] {
     color: var(--paper);
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
 
   .nav-toggle {
@@ -566,6 +685,11 @@ footer.site-footer a {
   .menu-item {
     flex-direction: column;
     gap: 4px;
+  }
+
+  .order-fab {
+    padding: 12px 18px;
+    font-size: 0.85rem;
   }
 }
 
