@@ -320,12 +320,15 @@ nav.main-nav a:hover {
 
 .hero-photo {
   position: relative;
+  height: clamp(320px, 60vh, 640px);
+  overflow: hidden;
 }
 
 .hero-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 /* ---------- Ticket strip: a receipt-styled stat row, not a plain 4-col grid ---------- */
@@ -651,7 +654,7 @@ section {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
 }
 
@@ -691,7 +694,7 @@ footer.site-footer a {
   }
 
   .hero-photo {
-    min-height: 280px;
+    height: 280px;
     order: -1;
   }
 
@@ -710,10 +713,6 @@ footer.site-footer a {
 
   .split-photo {
     min-height: 260px;
-  }
-
-  .grid-3 {
-    grid-template-columns: 1fr;
   }
 }
 

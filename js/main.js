@@ -21,9 +21,26 @@ const orderFab = document.querySelector(".order-fab");
 const heroLike = document.querySelector(".hero, .menu-intro");
 
 if (orderFab && heroLike) {
+  let lastScrollY = window.scrollY;
+
   const revealFab = () => {
     const pastHero = heroLike.getBoundingClientRect().bottom <= 80;
-    orderFab.classList.toggle("is-visible", pastHero);
+    const y = window.scrollY;
+    const delta = y - lastScrollY;
+    lastScrollY = y;
+
+    if (!pastHero) {
+      orderFab.classList.remove("is-visible");
+      return;
+    }
+    // Hide while actively scrolling down, so the fixed button doesn't sweep
+    // over headings and item text; show once the visitor pauses or scrolls
+    // back up to read something.
+    if (delta > 4) {
+      orderFab.classList.remove("is-visible");
+    } else if (delta < -4 || delta === 0) {
+      orderFab.classList.add("is-visible");
+    }
   };
   revealFab();
   window.addEventListener("scroll", revealFab, { passive: true });
