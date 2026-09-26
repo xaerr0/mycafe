@@ -42,6 +42,8 @@ The new site has the full menu, every section, item, and price, as real, readabl
 
 The current site has very few real photos of the restaurant itself. We pulled what's usable (the logo and two interior shots) directly from mycafego.com for the new site. One of the two interior photos is noticeably low resolution when shown at full width, so it's a good candidate to replace with a phone photo taken in the dining room in good light. My Cafe's Instagram (@mycafego) has a strong, active feed of real food photography that would upgrade the new site significantly. It's worth asking the owner for a handful of full-resolution originals before this goes live.
 
+One asset worth specifically asking about: the current site's homepage uses a Facebook cover graphic (`facebook-cover(Mobile)-0001.png`) as one of its feature images, which is why we flagged it above as mismatched content. Looking closer, that graphic actually contains a genuinely appetizing photo of a burger, plated well, in good light. It's not usable as-is: it's only 640x360 pixels (too small to enlarge cleanly) and has the logo and marketing text ("DELICIOUS FOOD, GREAT QUALITY & VALUE") baked directly into the image. If the owner has the original, uncomposited version of that photo, it could be a much stronger hero image than the current soft-focus interior shot.
+
 ## Reviews
 
 My Cafe is ranked #10 of 204 restaurants in Newark on Tripadvisor. We pulled a few of the shorter, already-public review snippets displayed on the current site itself to use as testimonials on the new site. We didn't add anything that wasn't already public and attributed to a real review.
