@@ -143,8 +143,8 @@ p { margin: 0 0 1em; max-width: 62ch; }
 .brand-text span {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.6rem;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
   font-weight: 700;
   color: var(--turquoise-dark);
   margin-top: 2px;
@@ -185,10 +185,11 @@ nav.main-nav a:hover {
   top: 20px;
   right: 20px;
   z-index: 60;
+  width: 42px;
+  height: 42px;
   background: var(--paper);
   border: 2px solid var(--coffee);
   border-radius: 2px;
-  padding: 9px 11px;
   cursor: pointer;
 }
 
@@ -196,11 +197,39 @@ nav.main-nav a:hover {
 .nav-toggle::before,
 .nav-toggle::after {
   content: "";
-  display: block;
+  position: absolute;
+  left: 50%;
   width: 20px;
   height: 2px;
   background: var(--coffee);
-  margin: 4px 0;
+  transform: translateX(-50%);
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.nav-toggle::before {
+  top: 14px;
+}
+
+.nav-toggle span {
+  top: 20px;
+}
+
+.nav-toggle::after {
+  top: 26px;
+}
+
+.nav-toggle[aria-expanded="true"] span {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"]::before {
+  top: 20px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"]::after {
+  top: 20px;
+  transform: translateX(-50%) rotate(-45deg);
 }
 
 .order-fab {
@@ -217,6 +246,16 @@ nav.main-nav a:hover {
   padding: 14px 20px;
   border-radius: 999px;
   box-shadow: 0 8px 20px rgba(46, 32, 24, 0.25);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.order-fab.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .order-fab:hover {
@@ -243,12 +282,12 @@ nav.main-nav a:hover {
 }
 
 .hero .eyebrow {
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
   color: var(--mustard);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 0.9em;
+  font-size: 1.05rem;
+  margin-bottom: 0.7em;
 }
 
 .hero h1 {
@@ -376,11 +415,11 @@ section {
 
 .section-head .kicker {
   display: block;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: 0.3em;
   opacity: 0.85;
 }
 
@@ -488,15 +527,31 @@ section {
 }
 
 .menu-intro .eyebrow {
+  font-family: var(--font-display);
   color: var(--mustard);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .menu-intro h1 {
   color: var(--paper);
+}
+
+.menu-course {
+  margin-top: 2.4em;
+}
+
+.menu-course:first-child {
+  margin-top: 0;
+}
+
+.menu-course h2 {
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: var(--turquoise-dark);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.4em;
 }
 
 .accordion {
@@ -514,9 +569,14 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.accordion summary h3 {
+  margin: 0;
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
+  color: inherit;
 }
 
 .accordion summary::-webkit-details-marker {
@@ -534,10 +594,19 @@ section {
   transform: rotate(45deg);
 }
 
+.accordion details > *:not(summary) {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.accordion details > *:last-child {
+  padding-bottom: 20px;
+}
+
 .accordion .note {
   font-size: 0.9rem;
   opacity: 0.75;
-  margin-top: -0.6em;
+  margin-top: 0;
 }
 
 .menu-items {
@@ -698,7 +767,11 @@ footer.site-footer a {
     scroll-behavior: auto;
   }
 
-  nav.main-nav {
+  nav.main-nav,
+  .order-fab,
+  .nav-toggle span,
+  .nav-toggle::before,
+  .nav-toggle::after {
     transition: none;
   }
 }
