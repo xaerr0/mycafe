@@ -99,6 +99,13 @@ p { margin: 0 0 1em; max-width: 62ch; }
   color: var(--cream);
 }
 
+/* The default hover above matches the hero's own background color, so on
+   that dark panel it would make the button vanish instead of darkening. */
+.hero .btn-primary:hover {
+  background: var(--cream);
+  color: var(--coffee);
+}
+
 .btn-outline {
   border-color: currentColor;
 }
