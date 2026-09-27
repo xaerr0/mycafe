@@ -320,54 +320,32 @@ nav.main-nav a:hover {
   display: block;
 }
 
-/* ---------- Ticket strip: a receipt-styled stat row, not a plain 4-col grid ---------- */
+/* ---------- Stat row: plain numbers doing the work, no card, no dashed
+   coupon-edge decoration. ---------- */
 
-.ticket {
-  background: var(--paper);
-  border: 2px dashed var(--coffee-soft);
-  border-radius: 6px;
-  margin: -34px auto 0;
-  max-width: 880px;
-  position: relative;
-  z-index: 5;
-  padding: 22px 16px;
+.stats {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
-.ticket::before,
-.ticket::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  width: 24px;
-  height: 24px;
-  background: var(--cream);
-  border-radius: 50%;
-}
-
-.ticket::before { left: -12px; }
-.ticket::after { right: -12px; }
-
-.ticket div {
+.stats div {
   text-align: center;
-  border-right: 1px dashed var(--line);
-  padding: 0 8px;
 }
 
-.ticket div:last-child {
-  border-right: none;
-}
-
-.ticket strong {
+.stats strong {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--turquoise-dark);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--coffee);
 }
 
-.ticket span {
-  font-size: 0.78rem;
+.stats span {
+  font-size: 0.82rem;
   color: var(--coffee-soft);
 }
 
@@ -687,13 +665,9 @@ footer.site-footer a {
     order: -1;
   }
 
-  .ticket {
+  .stats {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 16px;
-  }
-
-  .ticket div:nth-child(2) {
-    border-right: none;
+    row-gap: 24px;
   }
 
   .split {
